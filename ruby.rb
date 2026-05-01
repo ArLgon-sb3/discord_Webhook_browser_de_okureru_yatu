@@ -18,18 +18,25 @@ color = params[:color]
 puts color
 color2 = "0x" + color[1,6]
 puts color2.to_i(16)
-data = {
-    "embeds": [
+if params[:mode] == "dog"
+  data = {
+      "embeds": [
     {
-      "title": text2,
-      "description": text,
-      "color": color2.to_i(16)
-    }
-  ],
-  "username": name,
-  "avatar_url": avater
-}
-
+        "title": text2,
+        "description": text,
+        "color": color2.to_i(16)
+      }
+    ],
+    "username": name,
+    "avatar_url": avater
+  }
+else
+  data = {
+      "content": text,
+    "username": name,
+    "avatar_url": avater
+  }
+end
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 
