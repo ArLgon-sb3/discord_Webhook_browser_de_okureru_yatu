@@ -14,13 +14,16 @@ text2 = params[:message2]
 name = params[:name]
 url = URI.parse(params[:message3])
 avater = params[:avater]
-
+color = params[:color]
+puts color
+color2 = "0x" + color[1,6]
+puts color2.to_i(16)
 data = {
     "embeds": [
     {
       "title": text2,
       "description": text,
-      "color": 16711680
+      "color": color2.to_i(16)
     }
   ],
   "username": name,
