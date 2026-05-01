@@ -11,8 +11,9 @@ post '/result' do
 
 text = params[:message]
 text2 = params[:message2]
-
+name = params[:name]
 url = URI.parse(params[:message3])
+avater = params[:avater]
 
 data = {
     "embeds": [
@@ -21,7 +22,9 @@ data = {
       "description": text,
       "color": 16711680
     }
-  ]
+  ],
+  "username": name,
+  "avatar_url": avater
 }
 
 http = Net::HTTP.new(url.host, url.port)
